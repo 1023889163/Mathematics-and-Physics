@@ -1,0 +1,94 @@
+\RequirePackage{amsmath}
+\RequirePackage{mathtools}
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+\RequirePackage{bm}
+\RequirePackage{amsthm}
+\RequirePackage{mathrsfs}
+\RequirePackage{bbold}
+\RequirePackage{stmaryrd}
+\RequirePackage{esint}
+\RequirePackage{physics}
+\RequirePackage{slashed}
+\RequirePackage{cancel}
+\RequirePackage{upgreek}
+\RequirePackage{cases}
+\RequirePackage{empheq}
+\RequirePackage{calculator}
+\RequirePackage{tikz}
+\usetikzlibrary{shadows}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\RequirePackage{array}
+\RequirePackage{blkarray}
+\RequirePackage{delarray}
+\RequirePackage[table,dvipsnames,x11names]{xcolor}
+\RequirePackage[
+backend=biber,
+style=numeric-comp,
+sorting=none
+]{biblatex}
+\addbibresource{references.bib}
+\usepackage[most]{tcolorbox}
+\RequirePackage{authblk}
+\setlength{\affilsep}{0.2em}
+\RequirePackage{multicol}
+\usepackage[
+a4paper,
+left=2cm,
+right=2cm,
+top=2.5cm,
+bottom=2.5cm,
+headheight=1cm,
+footskip=1cm
+]{geometry}
+\RequirePackage{caption}
+\captionsetup{
+labelfont=bf,
+skip=3pt,
+figurename=图,
+tablename=表
+}
+\graphicspath{
+{./figures/}
+{./images/}
+}
+\linespread{1.3}
+\setlength{\parskip}{3mm}
+\setlength{\parindent}{0em}
+\renewcommand{\maketitle}{%
+\begin{center}
+{\LARGE\bfseries \@title} \\[0.5em]
+\@author \\[0.5em]
+\end{center}
+}
+\RequirePackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=red,filecolor=magenta,urlcolor=cyan}
+\RequirePackage{appendix}
+\RequirePackage{silence}
+\WarningFilter{latex}{Font shape}
+\newtcbtheorem[number within=section]{mtheoreminner}{定理}{enhanced, breakable, colback=green!5, colframe=green!60!black, fonttitle=\bfseries}{thm}
+\NewDocumentEnvironment{mtheorem}{m o}{\IfNoValueTF{#2}{\begin{mtheoreminner}{#1}{}}{\begin{mtheoreminner}{#1}{#2}}}{\end{mtheoreminner}}
+\newtcbtheorem[number within=section]{mcorollaryinner}{推论}{enhanced, breakable, colback=gray!5, colframe=gray!60!black, fonttitle=\bfseries}{cor}
+\NewDocumentEnvironment{mcorollary}{m o}{\IfNoValueTF{#2}{\begin{mcorollaryinner}{#1}{}}{\begin{mcorollaryinner}{#1}{#2}}}{\end{mcorollaryinner}}
+\newtcbtheorem[number within=section]{mpropositioninner}{命题}{enhanced, breakable, colback=gray!5, colframe=gray!60!black, fonttitle=\bfseries}{prop}
+\NewDocumentEnvironment{mproposition}{m o}{\IfNoValueTF{#2}{\begin{mpropositioninner}{#1}{}}{\begin{mpropositioninner}{#1}{#2}}}{\end{mpropositioninner}}
+\newtcbtheorem[number within=section]{mdefinitioninner}{定义}{enhanced, breakable, colback=blue!5, colframe=cyan!90!black, fonttitle=\bfseries}{def}
+\NewDocumentEnvironment{mdefinition}{m o}{\IfNoValueTF{#2}{\begin{mdefinitioninner}{#1}{}}{\begin{mdefinitioninner}{#1}{#2}}}{\end{mdefinitioninner}}
+\newtcbtheorem[number within=section]{mnoteinner}{注记}{enhanced, breakable, colback=pink!5, colframe=pink!80!black, fonttitle=\bfseries}{note}
+\NewDocumentEnvironment{mnote}{m o}{\IfNoValueTF{#2}{\begin{mnoteinner}{#1}{}}{\begin{mnoteinner}{#1}{#2}}}{\end{mnoteinner}}
+\newtcbtheorem[number within=section]{mproofinner}{证明}{enhanced, breakable, colback=orange!5, colframe=orange!85!black, fonttitle=\bfseries}{prf}
+\NewDocumentEnvironment{mproof}{m o}{\IfNoValueTF{#2}{\begin{mproofinner}{#1}{}}{\begin{mproofinner}{#1}{#2}}}{\end{mproofinner}}
+\newtcbtheorem[number within=section]{mexampleinner}{重要例子}{enhanced, breakable, colback=yellow!5, colframe=Peach, fonttitle=\bfseries}{ex}
+\NewDocumentEnvironment{mexample}{m o}{\IfNoValueTF{#2}{\begin{mexampleinner}{#1}{}}{\begin{mexampleinner}{#1}{#2}}}{\end{mexampleinner}}
+\renewcommand{\contentsname}{}
+\newcommand{\bfr}[1]{\textbf{\textcolor{red}{#1}}}
+\newcommand{\bfp}[1]{\textcolor{pink}{#1}}
+\newcommand{\bfo}[1]{\textcolor{orange}{#1}}
+\newcommand{\bfb}[1]{\textcolor{blue}{#1}}
+\newcommand{\co}[2][]{\hat{#2}^\dagger_{#1}}
+\newcommand{\ao}[2][]{\hat{#2}_{#1}}
+\newcommand{\su}{\uparrow}
+\newcommand{\sd}{\downarrow}
+\newcommand{\dsp}{\displaystyle}
+\allowdisplaybreaks[1]

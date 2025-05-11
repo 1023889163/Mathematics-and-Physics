@@ -33,11 +33,21 @@
 \subsubsection{数项级数}
 
 数项级数(number series),就是常数项作为级数项的级数,其表达式可写为
-
 \begin{equation}
 	\sum^{\infty}_{n=0} {\omega}_{n} = {\omega}_{0} + {\omega}_{1} + {\omega}_{2} + ...
 \end{equation}
-	
+其中各项的取值都在复数域上.如果一个级数的部分和${s}_{n} = {\omega}_{0} + {\omega}_{1} + ... + {\omega}_{n}$当$n {\to} {\infty}$时,有有限极限$s$,那么就说这个级数收敛于$s$,并称$s$为它的和,记作
+\begin{equation}
+	s = \sum^{\infty}_{n=0} {\omega}_{n}
+\end{equation}
+不收敛的级数称为发散级数.
+
+如果将级数中的每项${\omega}_{n}$展开为${\mu}_{n} + {\text{i}} {\niu}_{n}$,那么$\sum^{\infty}_{n=0} {\omega}_{n}$收敛于$s = {\sigma} + {\text{i}}{\tau}$的充要条件是两个实级数$\sum^{\infty}_{n=0} {\mu}_{n}$和$\sum^{\infty}_{n=0} {\niu}_{n}$分别收敛于${\sigma}$和${\tau}$.
+
+如果由复数级数所有项的模构成的级数$\sum^{\infty}_{n=0} | {\omega}_{n} |$收敛,那么就说$\sum^{\infty}_{n=0} {\omega}_{n}$绝对收敛.
+
+如果级数绝对收敛,那么这个级数必收敛,对于收敛而非绝对收敛的级数,我们称之为条件收敛级数.
+
 \subsubsection{函数项级数}
 
 \subsubsection{幂级数}

@@ -20,155 +20,518 @@
 
 
 %====================
-\section{由几何级数到超几何级数}
+\section{数学基础}
 
 超几何级数来源于几何级数,而几何级数是最简单的幂级数,幂级数是最简单的函数项级数,因此我们将从函数项级数开始,一步一步进行介绍.在本文中,如果没有特殊
 
-\subsection{函数项级数的基本性质}
+\subsection{幂级数与解析函数}
 
 函数项级数就是函数作为级数项的级数.
 
 \subsubsection{数项级数}
 
-数项级数(number series),就是常数项作为级数项的级数,其表达式可写为
-\begin{equation}
-	\sum^{\infty}_{n=0} {\omega}_{n} = {\omega}_{0} + {\omega}_{1} + {\omega}_{2} + ...
-\end{equation}
-其中各项的取值都在复数域上.如果一个级数的部分和${s}_{n} = {\omega}_{0} + {\omega}_{1} + ... + {\omega}_{n}$当$n {\to} {\infty}$时,有有限极限$s$,那么就说这个级数收敛于$s$,并称$s$为它的和,记作
-\begin{equation}
-	s = \sum^{\infty}_{n=0} {\omega}_{n}
-\end{equation}
-不收敛的级数称为发散级数.
+\begin{mdefinition}{数项级数的定义}
+	数项级数(number series),就是常数项作为级数项的级数,其表达式可写为
+	\begin{equation}
+		\sum^{\infty}_{n=0} {\omega}_{n} = {\omega}_{0} + {\omega}_{1} + {\omega}_{2} + ...
+	\end{equation}
+	其中各项的取值都在复数域上.
+\end{mdefinition}
 
-如果将级数中的每项${\omega}_{n}$展开为${\mu}_{n} + {\text{i}} {\niu}_{n}$,那么$\sum^{\infty}_{n=0} {\omega}_{n}$收敛于$s = {\sigma} + {\text{i}}{\tau}$的充要条件是两个实级数$\sum^{\infty}_{n=0} {\mu}_{n}$和$\sum^{\infty}_{n=0} {\niu}_{n}$分别收敛于${\sigma}$和${\tau}$.
+\begin{mdefinition}{级数的收敛与发散}
+	如果一个级数的部分和${s}_{n} = {\omega}_{0} + {\omega}_{1} + ... + {\omega}_{n}$当$n {\to} {\infty}$时,有有限极限$s$,那么就说这个级数收敛于$s$,并称$s$为它的和,记作
+	\begin{equation}
+		s = \sum^{\infty}_{n=0} {\omega}_{n}
+	\end{equation}
+	不收敛的级数称为发散级数.
+\end{mdefinition}
 
-如果由复数级数所有项的模构成的级数$\sum^{\infty}_{n=0} | {\omega}_{n} |$收敛,那么就说$\sum^{\infty}_{n=0} {\omega}_{n}$绝对收敛.
+\begin{mtheorem}{复级数收敛条件}
+	如果将级数中的每项${\omega}_{n}$展开为${\mu}_{n} + {\text{i}} {\nu}_{n}$,那么$\sum^{\infty}_{n=0} {\omega}_{n}$收敛于$s = {\sigma} + {\text{i}}{\tau}$的充要条件是两个实级数$\sum^{\infty}_{n=0} {\mu}_{n}$和$\sum^{\infty}_{n=0} {\nu}_{n}$分别收敛于${\sigma}$和${\tau}$.
+\end{mtheorem}
 
-如果级数绝对收敛,那么这个级数必收敛,对于收敛而非绝对收敛的级数,我们称之为条件收敛级数.
+\begin{mdefinition}{复级数的绝对收敛}
+	如果由复数级数所有项的模构成的级数$\sum^{\infty}_{n=0} | {\omega}_{n} |$收敛,那么就说$\sum^{\infty}_{n=0} {\omega}_{n}$绝对收敛.\\
+	如果级数绝对收敛,那么这个级数必收敛,对于收敛而非绝对收敛的级数,我们称之为条件收敛级数.
+\end{mdefinition}
 
 \subsubsection{函数项级数}
 
-函数项级数就是函数作为级数项的级数,其表达式可以写为
-\begin{equation}
-	\sum^{\infty}_{n=0} {f}_{n} \left( {z} \right)
-\end{equation}
-函数项级数的定义域为级数项中每一项函数定义域的交集,如果满足$z$在定义域上的每一点级数都收敛,则它的和就是定义在级数定义域上的一个函数,称为级数的和函数,记为
-\begin{equation}
-	{f} \left( {z} \right) = \sum^{\infty}_{n=0} {f}_{n} \left( {z} \right)
-\end{equation}
+\begin{mdefinition}{函数项级数及其和函数的定义}
+	函数项级数就是函数作为级数项的级数,其表达式可以写为
+	\begin{equation}
+		\sum^{\infty}_{n=0} {f}_{n} \left( {z} \right)
+	\end{equation}
+	函数项级数的定义域为级数项中每一项函数定义域的交集,如果满足$z$在定义域上的每一点级数都收敛,则它的和就是定义在级数定义域上的一个函数,称为级数的和函数,记为
+	\begin{equation}
+		{f} \left( {z} \right) = \sum^{\infty}_{n=0} {f}_{n} \left( {z} \right)
+	\end{equation}\\
 
-如果用${\epsilon} - {N}$语言描述上述定义:对于级数定义域$E$有$z {\in} E$,对于给定的$z$,有任意${\epsilon} > {0}$,存在正整数$N = N\left( {\epsilon} , {z} \right)$,使当${n} > {N}$时,有$| {f} \left( {z} \right) - {s}_{n} \left( {z} \right) | < {\epsilon}$,其中${s}_{n} \left( {z} \right) = \sum^{n}_{k=0} {f}_{k} \left( {z} \right)$
+	如果用${\epsilon} - {N}$语言描述上述定义:对于级数定义域$E$有$z {\in} E$,对于给定的$z$,有任意${\epsilon} > {0}$,存在正整数$N = N\left( {\epsilon} , {z} \right)$,使当${n} > {N}$时,有$| {f} \left( {z} \right) - {s}_{n} \left( {z} \right) | < {\epsilon}$,其中${s}_{n} \left( {z} \right) = \sum^{n}_{k=0} {f}_{k} \left( {z} \right)$.\\
 
-上述的正整数${N} = {N} \left( {\epsilon} , {z} \right)$,一般地说,不但依赖于,还依赖于$z$.如果${N} = {N} \left( {\epsilon} \right)$不依赖于$z$,则说${f} \left( {z} \right) = \sum^{\infty}_{n=0} {f}_{n} \left( {z} \right)$是一致收敛的.
+	上述的正整数${N} = {N} \left( {\epsilon} , {z} \right)$,一般地说,不但依赖于,还依赖于$z$.如果${N} = {N} \left( {\epsilon} \right)$不依赖于$z$,则说${f} \left( {z} \right) = \sum^{\infty}_{n=0} {f}_{n} \left( {z} \right)$是一致收敛的.
+\end{mdefinition}
 
-函数项级数的基本性质:1.若级数$\sum^{\infty}_{n=0} {f}_{n} \left( {z} \right)$在点集上连续,并且一致收敛,则和函数${f} \left( {z} \right)$也在这个点集上连续;2.若级数$\sum^{\infty}_{n=0} {f}_{n} \left( {z} \right)$各项在某个区域内有定义,且在这一区域内任意有界闭子区域内一致收敛,则称级数$\sum^{\infty}_{n=0} {f}_{n} \left( {z} \right)$在这个区域内内闭一致收敛;3.(魏尔斯特拉斯定理)如果级数$\sum^{\infty}_{n=0} {f}_{n} \left( {z} \right)$各项均在某一区域内解析,且级数在区域内内闭一致收敛于${f} \left( {z} \right)$,则${f} \left( {z} \right) = \sum^{\infty}_{n=0} {f}_{n} \left( {z} \right)$在该区域内解析,并可逐项求导至任意阶数,同时级数项的任意阶导函数构成的级数内闭一致收敛于${f}^{\left( {n} \right)}_{n} \left( {z} \right)$.
+\begin{mtheorem}{柯西一致收敛准则}
+	级数$\sum^{\infty}_{n=0}$在点集$E$上一致收敛于某函数的充要条件是:任意给定${\epsilon} > 0$,存在正整数${N} = {N}\left( {\epsilon} \right)$,使当${n} > {N}$时,对一切${z} {\in} {E}$,均满足
+	\begin{equation}
+		\left| {f}_{n+1} \left( {z} \right) + ... + {f}_{n+p} \left( {z} \right)\right| < {\epsilon}, {\quad} p = 1 , 2 , 3 , ...
+	\end{equation}
+\end{mtheorem}
+
+\begin{mtheorem}{魏尔斯特拉斯$M$-判别法}
+	如果有正数列$M$,对一切${z} {\in} {E}$,均有
+	\begin{equation}
+		\left| {f}_{n} \left( {z} \right) \right| {\leqslant} {M}_{n} , {\quad} n = 0 , 1 , 2 , ...	
+	\end{equation}
+	且正项级数$\sum^{\infty}_{n=0} {M}_{n}$收敛,则$\sum^{\infty}_{n=0} {f}_{n} \left( {z} \right)$在$E$上绝对收敛且一致收敛.
+	这样的正项级数$\sum^{\infty}_{n=0} {M}_{n}$称为复函数项级数$\sum^{\infty}_{n=0} {f}_{n} \left( {z} \right)$的强级数(或优级数),上述$M$-判别法又称为优级数准则.
+\end{mtheorem}
+
+\begin{mtheorem}{函数项级数和函数的连续性}
+	若级数$\sum^{\infty}_{n=0} {f}_{n} \left( {zn} = 0 , 1 , 2 , ... \right)$在点集上连续,并且一致收敛,则和函数${f} \left( {z} \right)$也在这个点集上连续.
+\end{mtheorem}
+
+\begin{mtheorem}{函数项级数和内闭一致收敛性}
+	若级数$\sum^{\infty}_{n=0} {f}_{n} \left( {z} \right)$各项在某个区域内有定义,且在这一区域内任意有界闭子区域内一致收敛,则称级数$\sum^{\infty}_{n=0} {f}_{n} \left( {z} \right)$在这个区域内内闭一致收敛.
+\end{mtheorem}
+
+\begin{mtheorem}{魏尔斯特拉斯定理}
+	如果级数$\sum^{\infty}_{n=0} {f}_{n} \left( {z} \right)$各项均在某一区域内解析,且级数在区域内内闭一致收敛于${f} \left( {z} \right)$,则:
+	\begin{enumerate}
+		\item ${f} \left( {z} \right) = \sum^{\infty}_{n=0} {f}_{n} \left( {z} \right)$在该区域内解析.
+		\item ${f} \left( {z} \right) = \sum^{\infty}_{n=0} {f}_{n} \left( {z} \right)$在该区域内可逐项求导至任意阶数,且${f}^{\left( {p} \right)} \left( {z} \right) = \sum^{\infty}_{n=0} {f}^{\left( {p} \right)}_{n} \left( {z} \right)$.
+		\item $\sum^{\infty}_{n=0} {f}^{\left( {p} \right)}_{n} \left( {z} \right)$在该区域内内闭一致收敛于${f}^{\left( {p} \right)} \left( {z} \right)$.
+	\end{enumerate}
+\end{mtheorem}
 
 \subsubsection{幂级数}
 
-最简单的函数项级数是幂级数
+\begin{mdefinition}{函数项级数及其和函数的定义}
+	最简单的函数项级数是幂级数,其表达式为
+	\begin{equation}
+		\sum^{\infty}_{n=0} {c}_{n} {\left( {z} - {a} \right)}^{n} = {c}_{0} + {c}_{1} {\left( {z} - {a}\right)} + {c}_{1} {\left( {z} - {a} \right)}^{2} + ...
+	\end{equation}
+	其中${c}_{0}$,${c}_{1}$,${c}_{2}$,...和${a}$是给定的复常数.不失一般性,我们可以假定${a} = 0$,此时幂级数为
+	\begin{equation}
+		\sum^{\infty}_{n=0} {c}_{n} {z}^{n} = {c}_{0} + {c}_{1} {z} + {c}_{1} {z}^{2} + ...
+	\end{equation}
+\end{mdefinition}
+
+\begin{mtheorem}{阿贝尔定理}
+	如果级数$\sum^{\infty}_{n=0} {c}_{n} {z}^{n}$在某点${z}_{0} \left({z} {\neq} {0}\right)$收敛,则它在以$O$为圆心并通过${z}_{0}$的圆${K} : | {z} | {<} | {z}_{0} |$内绝对收敛,且内闭一致收敛.
+\end{mtheorem}
+
+\begin{mproof}{阿贝尔定理的证明}
+	设$z$是所述圆内任一定点,因为$\sum^{\infty}_{n=0} {c}_{n} {z}^{n}$收敛,它的各项必然有界,即有正整数$M$,使得
+	\begin{equation*}
+		\left| {c}_{n} {z}^{n}_{0} \right| {\leqslant} {M}, {\quad} {n} = 0 , 1 , 2 , ...
+	\end{equation*}
+	这样,即有
+	\begin{equation*}
+		\left| {c}_{n} {z}^{n} \right| = \left| {c}_{n} {z}^{n}_{0} {\left( \frac{z}{{z}_{0}} \right)}^{n} \right| {\leqslant} M { \left| \frac{z}{{z}_{0}} \right| }^{n}
+	\end{equation*}
+	注意到$| {z} |{<} | {z}_{0} |$,所以级数$\sum^{\infty}_{n=0}M { \left| \frac{z}{{z}_{0}} \right| }^{n}$为收敛的等比级数,因而级数$\sum^{\infty}_{n=0} {c}_{n} {z}^{n}$在圆$K$内绝对收敛.
+
+	其次,对闭圆$\left| {z} \right| {\leqslant} {\rho} \left( {\rho} < \left| {z}_{0} \right|\right)$上的一切点来说,有
+	\begin{equation*}
+		\left| {c}_{n} {z}^{n} \right| {\leqslant} \left| {c}_{n} \right| {\rho}_{n}
+	\end{equation*}
+	由第一部分证明可知$\sum^{\infty}_{n=0} \left| {c}_{n} \right| {\rho}^{n} $是收敛的,即$\sum^{\infty}_{n=0} {c}_{n} {z}^{n}$在闭圆$\left| {z} \right| {\leqslant} {\rho}\left( {\rho} < \left| {z}_{0} \right|\right)$上有收敛的强级数,因而它在闭圆$\left| {z} \right| {\leqslant} {\rho}$上一致收敛.
+\end{mproof}
+\begin{mcorollary}{阿贝尔定理的推论}
+	若幂级数$\sum^{\infty}_{n=0} {c}_{n} {z}^{n}$在${z} = {z}_{1}$点发散,则其在以原点为圆心并通过${z}_{q}$的圆的外部必定处处发散.
+\end{mcorollary}
+
+\begin{mdefinition}{幂级数的收敛圆与收敛半径}
+	我们知道幂级数在${z} = 0$处总是收敛的,在${z} {\neq} 0$点可能有以下三种情况:
+	\begin{enumerate}
+		\item 对任意的${z} {\neq} 0$,级数均发散.
+		\item 对任意的${z} {\neq} 0$,级数均收敛.
+		\item 级数有不为$0$的收敛点,同时也有发散点.
+	\end{enumerate}
+
+	在第三种情况下,由阿贝尔定理及推论,不难看出:必存在一个有限正数$R$,使得给定的幂级数在圆周$\left| {z} \right| = {R}$内部绝对收敛,在圆周$\left| {z} \right| = {R}$外部发散.$R$称为此幂级数的收敛半径;圆$\left| {z} - {a} \right| < {R}$和圆周$\left| {z} - {a} \right| = {R}$分别称为它的收敛圆和收敛圆周.
+\end{mdefinition}
+
+\begin{mtheorem}{泰勒定理}
+	设${f} \left( {z} \right)$在区域$D$内解析,${a} {\in} {D}$,只要圆$K:\left| {z} - {a} \right| < {R}$含于$D$内,则${f} \left( {z} \right)$在$K$内能展开成幂级数
+	\begin{equation}
+		{f} \left( {z} \right) = \sum^{\infty}_{n=0} {c}_{n} {\left( {z} - {a} \right)}^{n}
+	\end{equation}
+	其中
+	\begin{equation}
+		{c}_{n} = \frac{1}{2 {\pi} \text{i}} \oint_{\gamma} \frac{{f} \left( {\zeta} \right)}{{\left( {\zeta} - {a} \right)}^{n+1}} \text{d}{zeta} = \frac{{f}^{\left( {n} \right)} \left( {a} \right)}{n!} , {\quad} n = 0 , 1 , 2 , ...
+	\end{equation}
+	称为泰勒系数,${\gamma}$为圆周$\left| {\zeta} - {a} \right| = {\rho} \left( {0} < {\rho} < {R} \right)$.由泰勒定理展开出的幂级数称为泰勒级数,并且泰勒展开式是唯一的.
+\end{mtheorem}
+
+\begin{mdefinition}{洛朗级数}
+	洛朗级数是泰勒级数的一种推广,考虑两个级数
+	\begin{equation*}
+		{c}_{0} + {c}_{1} \left( {z} - {a} \right) + {c}_{2} {\left( {z} - {a} \right)}^{2}+ ... 
+	\end{equation*}
+	\begin{equation*}
+		\frac{ {c}_{-1} }{ {z} - {a} } + \frac{ {c}_{-2} }{ { {z} - {a} }^{2} } + ...
+	\end{equation*}
+	前者是幂级数,故它在收敛圆$\left| {z} - {a} \right| < R \left( 0 {<} R {\leqslant} + {\infty} \right)$内表示一个解析函数.
+	对第二个级数做代换${\zeta} = \frac{1}{ {z} - {a} }$,得
+	\begin{equation*}
+		{c}_{-1} {\zeta} + {c}_{-2} {\zeta}^{2} + ...
+	\end{equation*}
+	设它的收敛区域为$\left| {\zeta} \right| < \frac{1}{r}$,其中$0 < \frac{1}{r} {\leqslant} {\infty}$,再变回到原来的复变数$z$,即知级数在$\left| {z} - {a} \right| > {r} \left( {0} {\leqslant} {r} < + {\infty}\right)$内表示一解析函数.
+
+	则我们可得洛朗定理与洛朗级数.
+
+	在圆环${H} : {r} < {\left| {z} - {a} \right|} < {R} \left( {r} {\geqslant} 0 , {R} {\leqslant} + {\infty} \right)$内的解析函数$f \left( {z} \right)$必可展开成级数
+	\begin{equation}
+		{f} \left( {z} \right) = \sum^{ + {\infty} }_{ n = - {\infty} } {c}_{n} { \left( {z} - {a} \right) }^{n}
+	\end{equation}
+	其中
+	\begin{equation}
+		{c}_{n} = \frac{1}{2 {\pi} \text{i}} \oint_{\gamma} \frac{{f} \left( {\zeta} \right)}{{\left( {\zeta} - {a} \right)}^{n+1}} \text{d}{\zeta}, {\quad} n = 0 , {\pm} 1 , {\pm} 2 , ...
+	\end{equation}
+	称为洛朗系数.由洛朗定理展开出的幂级数称为在圆环$H$的洛朗级数.$\gamma$为圆周$\left| {z} - {a} \right| = {\rho} \left( {r} {<} {\rho} {<} {R} \right)$,并且展开式是唯一的,即$f \left( {z} \right)$及圆环$H$唯一地确定了系数${c}_{n}$.我们称非负幂部分为正则部分,负幂部分为主要部分.
+\end{mdefinition}
+
+\begin{mdefinition}{解析函数的孤立奇点}
+	若函数${f} \left( {z} \right)$在$ {z} = {a} $不解析(不可微或无定义),而在${z} = {a}$的某去心邻域$ {} < \left| {} - {} \right| < {} $内解析,则称$ {z} = {a} $是${f} \left( {z} \right)$的一个孤立奇点.
+
+	如果在$ {z} = {a} $的无论多么小的领域内,总有除$ {z} = {a} $以外的奇点,则$ {z} = {a} $是${f} \left( {z} \right)$的非孤立奇点.
+
+	孤立奇点存在三种类型,这三种类型是根据其洛朗展开式的主要部分进行分类的:
+	\begin{enumerate}
+		\item 如果函数的主要部分为零,则$ {z} = {a} $点为${f} \left( {z} \right)$的可去奇点.
+		\item 如果函数的主要部分为有限多项,则$ {z} = {a} $点为${f} \left( {z} \right)$的$m$阶极点.
+		\item 如果函数的主要部分为无限多项,则$ {z} = {a} $点为${f} \left( {z} \right)$的本征奇点.
+	\end{enumerate}
+\end{mdefinition}
 
 \subsection{几何级数及其基本性质}
 
-几何级数,也就是等比级数,它的每一项与前一项的比值都为一固定常数,即${a}_{n}/{a}_{n-1}=c$,其中$c$为一非零常数.
+\begin{mdefinition}{几何级数}
+	几何级数,也就是等比级数,它的每一项与前一项的比值都为一固定常数,即${a}_{n}/{a}_{n-1}=c$,其中$c$为一非零常数.
 
-几何级数是最简单的幂级数,因此也导致其成为最早被严格分析的收敛级数之一,几何级数的表达式为$S\left(z\right)=\sum^{\infty}_{n=0}{z}^{n}$,其定义域在整个复平面上,下面我们介绍几何级数的敛散性.
-
-
-%====================
-
-
-%====================
-
-
-%====================
-
-
-%====================
-\section{例子}
-我们的模板支持什么:
-\begin{enumerate}
-	\item 物理$\ket{1}$, $\bra{1}$, $\mel**{1}{\mathbb{1}}{1}$, $\braket{1}$.
-	\item \bfr{五}\bfb{颜}\bfp{六}\bfo{色}的文字
-\end{enumerate}
-%==========
-\begin{mexample}{一些命题}
-	\begin{enumerate}
-		\item 雪是白的 = T
-		\item 煤炭是黑的 = T
-		\item 好大的雪 = 不是命题
-		\item 你妈死了 = 不是命题
-		\item 一个偶数可以表示成两个素数之和 - 是命题, 一定是T或者F的陈述, 但是只不过我们不知道T还是F
-	\end{enumerate}
-\end{mexample}
-%==========
-%==========
-\begin{mdefinition}{总是对的或者总是错的}
-	一个命题$p$如果总是正确T的, 就叫做tautology, 一个命题总是错F的叫做contradiction
+	几何级数是最简单的幂级数,因此也导致其成为最早被严格分析的收敛级数之一,几何级数的表达式为
+	\begin{equation}
+		S\left( {z} \right) = \sum^{\infty}_{n=0} {z}^{n}
+	\end{equation}
 \end{mdefinition}
-%==========
-%==========
-\begin{mnote}{到底有几个算符}
-	我们先来考虑一元算符, 我们的输出结果是2个, 但是能决定输出结果的输入可以是T或者F, 所以算符有$2^2=4$个.
-	
-	对于二元算符, 我们的输出结果还是2个, 但是能觉得输出结果的输入是TF的顺序组合, 有四个, 所以算符有$2^4=16$个!
-		我们先来考虑一元算符, 我们的输出结果是2个, 但是能决定输出结果的输入可以是T或者F, 所以算符有$2^2=4$个.
-	
-	对于二元算符, 我们的输出结果还是2个, 但是能觉得输出结果的输入是TF的顺序组合, 有四个, 所以算符有$2^4=16$个!
-		我们先来考虑一元算符, 我们的输出结果是2个, 但是能决定输出结果的输入可以是T或者F, 所以算符有$2^2=4$个.
-	
-	对于二元算符, 我们的输出结果还是2个, 但是能觉得输出结果的输入是TF的顺序组合, 有四个, 所以算符有$2^4=16$个!
-		我们先来考虑一元算符, 我们的输出结果是2个, 但是能决定输出结果的输入可以是T或者F, 所以算符有$2^2=4$个.
-	
-	对于二元算符, 我们的输出结果还是2个, 但是能觉得输出结果的输入是TF的顺序组合, 有四个, 所以算符有$2^4=16$个!
-		我们先来考虑一元算符, 我们的输出结果是2个, 但是能决定输出结果的输入可以是T或者F, 所以算符有$2^2=4$个.
-	
-	对于二元算符, 我们的输出结果还是2个, 但是能觉得输出结果的输入是TF的顺序组合, 有四个, 所以算符有$2^4=16$个!
-		我们先来考虑一元算符, 我们的输出结果是2个, 但是能决定输出结果的输入可以是T或者F, 所以算符有$2^2=4$个.
-	
-	对于二元算符, 我们的输出结果还是2个, 但是能觉得输出结果的输入是TF的顺序组合, 有四个, 所以算符有$2^4=16$个!
-		我们先来考虑一元算符, 我们的输出结果是2个, 但是能决定输出结果的输入可以是T或者F, 所以算符有$2^2=4$个.
-	
-	对于二元算符, 我们的输出结果还是2个, 但是能觉得输出结果的输入是TF的顺序组合, 有四个, 所以算符有$2^4=16$个!
-		我们先来考虑一元算符, 我们的输出结果是2个, 但是能决定输出结果的输入可以是T或者F, 所以算符有$2^2=4$个.
-	
-	对于二元算符, 我们的输出结果还是2个, 但是能觉得输出结果的输入是TF的顺序组合, 有四个, 所以算符有$2^4=16$个!
-		我们先来考虑一元算符, 我们的输出结果是2个, 但是能决定输出结果的输入可以是T或者F, 所以算符有$2^2=4$个.
-	
-	对于二元算符, 我们的输出结果还是2个, 但是能觉得输出结果的输入是TF的顺序组合, 有四个, 所以算符有$2^4=16$个!
-		我们先来考虑一元算符, 我们的输出结果是2个, 但是能决定输出结果的输入可以是T或者F, 所以算符有$2^2=4$个.
-	
-	对于二元算符, 我们的输出结果还是2个, 但是能觉得输出结果的输入是TF的顺序组合, 有四个, 所以算符有$2^4=16$个!
-\end{mnote}
-%==========
-%==========
-\begin{mtheorem}{否定命题的导出}
-		如果$p$, $q$都是命题, 那么我们必有
-		\begin{equation}
-			(p \Rightarrow q) \Leftrightarrow ((\neg q)\Rightarrow(\neg p))
-		\end{equation}
-\bfr{注意这里$p, q$的顺序!}
-\end{mtheorem}
-%==========
-%==========
-\begin{mproof}{证明否定命题的导出}
-	\begin{align}
-\begin{array}{c|c||c|c|c|c}
-p & q & \neg p & \neg q & p \Rightarrow q & (\neg q) \Rightarrow(\neg p) \\
-\hline \mathrm{F} & \mathrm{F} & \mathrm{T} & \mathrm{T} & \mathrm{T} & \mathrm{T} \\
-\mathrm{F} & \mathrm{T} & \mathrm{T} & \mathrm{F} & \mathrm{T} & \mathrm{T} \\
-\mathrm{T} & \mathrm{F} & \mathrm{F} & \mathrm{T} & \mathrm{F} & \mathrm{F} \\
-\mathrm{T} & \mathrm{T} & \mathrm{F} & \mathrm{F} & \mathrm{T} & \mathrm{T}
-\end{array}
-\end{align}
-我们发现最后两栏是等价的, O.K.!
+
+\begin{mproof}{几何级数的收敛半径及和函数}
+	由于几何级数的系数都为$1$,可得收敛半径$R = \lim_{n {\to} {\infty}} \left| \frac{1}{1} \right| = 1$.
+	设
+	\begin{equation*}
+	1 + {z} + {z}^{2} + ... + {z}^{n} = {s}_{n} \left( {z} \right) , {\quad} \left( {\left| {z} \right|} < 1 \right)
+	\end{equation*}
+	则有
+	\begin{equation*}
+	{z} + {z}^{2} + {z}^{3} +... + {z}^{n+1} = {z} {s}_{n} \left( {z} \right) , {\quad} \left( {\left| {z} \right|} < 1 \right)
+	\end{equation*}
+	两式相减,得
+	\begin{equation*}
+	\left( 1 - {z} \right) {s}_{n} \left( {z} \right) = 1 - {z}^{n+1}
+	\end{equation*}
+	即
+	\begin{equation*}
+	{s}_{n} \left( {z} \right) = \frac{1 - {z}^{n+1}}{1 - {z}}
+	\end{equation*}
+	令${n} {\to} {\infty}$即得
+	\begin{equation*}
+	1 + {z} + {z}^{2} + ... + {z}^{n} + ... = \frac{1}{1 - {z}} {\quad} \left( {\left| {z} \right|} < 1 \right)
+	\end{equation*}
 \end{mproof}
-%==========
-数学:
-\begin{equation}
-	\int f(x) \dd{x} = 0
-\end{equation}
+
+\subsection{几个重要形式的微分方程}
+\begin{mdefinition}{二阶齐次线性微分方程}
+	二阶齐次线性微分方程是形如
+	\begin{equation}
+		\frac{ {\text{d}}^{2} {\omega}}{ { \text{d} {z} }^{2} } + {p} \left( {z} \right) \frac{ \text{d} {\omega} }{ \text{d} {z} } + {q} \left( {z} \right) {\omega} = 0
+	\end{equation}
+	的微分方程.
+\end{mdefinition}
+\begin{mdefinition}{二阶齐次线性微分方程的奇点}
+	二阶齐次线性微分方程的奇点是指${p} \left( {z} \right)$或${q} \left( {z} \right)$不解析的点.
+\end{mdefinition}
+\begin{mdefinition}{福克斯(Fuchs)型方程}
+	福克斯型方程是一类二阶齐次线性微分方程,其所有奇点都是正则奇点,即${p} \left( {z} \right)$或${q} \left( {z} \right)$在奇点处的洛朗展开式的正则部分为无穷多项.
+\end{mdefinition}
 %====================
 
+\newpage
+
+%====================
+\section{超几何级数}
+
+\subsection{超几何级数的性质}
+
+\begin{mdefinition}{超几何级数}
+	由于几何级数的幂级数形式可以写为
+	\begin{equation*}
+		\sum^{\infty}_{n=0} {c}_{n} {z}^{n}
+	\end{equation*}
+	其中$ {c} = {c}_{0} = {c}_{1} = {c}_{2} = ... = {c}_{n} = ... $,于是有${c} \sum^{\infty}_{n=0} {z}^{n} $,如果我们将其推广,使相邻级数的系数的比值为$ {n} $的有理函数,即$ \frac{ {c}_{n+1} }{ {c}_{n} } = {P} \left( {n} \right)$,由于$ {P} \left( {n} \right) $为一有理函数,则其必可表示为两多项式相除,即有
+	\begin{equation*}
+		\frac{ {c}_{n+1} }{ {c}_{n} } = \frac{ {A} \left( {n} \right) }{ {B} \left( {n} \right) }
+	\end{equation*}
+	由于多项式在复数域中总可以进行因式分解为一次式的乘积,所以上式可转化为
+	\begin{equation*}
+		\frac{ {c}_{n+1} }{ {c}_{n} } = \frac{ {a}_{0} \left( {n} + {a}_{1} \right) \left( {n} + {a}_{2} \right) \left( {n} + {a}_{3} \right) ... }{  {b}_{0} \left( {n} + {b}_{1} \right) \left( {n} + {b}_{2} \right) \left( {n} + {b}_{3} \right) ... }
+	\end{equation*}
+
+	注意,上面所说的在复数域中进行因式分解,指的是系数在复数域中取值,此处的$ {n} $依旧取值为正整数.
+
+	出于某些历史原因(我这里猜想可能是由于泰勒展开式的原因),我们总是假定$ {B} \left( {n} \right) $中包含一个$ \left( {n} + 1 \right) $的一次式(即取一个$ {b} $参数为$ 1 $).
+	我们这里依旧取$ {c}_{0} $为$1$将以上这些条件代入到级数中,可得级数的表达式
+	\begin{equation}
+		\sum^{\infty}_{n=0} {c}_{n} {z}^{n} = 1 + \frac{ {a}_{1} {a}_{2} {a}_{3} ... }{ {b}_{1} {b}_{2} {b}_{3} ... } \frac{ {a}_{0} {z} }{ {b}_{0} } + \frac{ {a}_{1} {a}_{2} {a}_{3} ... }{ {b}_{1} {b}_{2} {b}_{3} ... } \frac{ \left( {1} + {a}_{1} \right) \left( {1} + {a}_{2} \right) \left( {1} + {a}_{3} \right) ... }{ \left( {1} + {b}_{1} \right) \left( {1} + {b}_{2} \right) \left( {1} + {b}_{3} \right) ... } \left( \frac{ {a}_{0} z }{ {b}_{0} } \right)^{2} \frac{ {1} }{ {2} ! } + ...
+	\end{equation}
+
+	对于$\frac{ {a}_{0} {z} }{ {b}_{0} }$,我们可以通过放缩去掉$\frac{ {a}_{0} }{ {b}_{0} }$.
+
+	对于$ {a} \left( {1} + {a} \right) \left( {2} + {a} \right) \left( {3} + {a} \right) $这样的乘积我们可以定义升阶乘$ { \left( {a} \right) }_{n} = {a} \left( {1} + {a} \right) \left( {2} + {a} \right) ... \left( {n} + {a} - {1} \right) $,如果$ {a} $为正整数,则我们可以把升阶乘表示为$ \frac{ { \left( {a} + {n} - {1} \right) } ! }{ { \left( {a} - {1} \right) } ! } $;如果$ {a} $为复数,则需要借助$Gamma$函数表示为$ \frac{ {\Gamma} { \left( {a} + {n} \right) } }{ {\Gamma} { { \left( {a} \right) } } } $(我们这里可以发现如果$ {a} $取$ 1 $时升阶乘就是阶乘,所以上文才会有泰勒展开式的猜想).
+
+	于是超几何级数就可以简化为
+	\begin{equation}
+		\sum^{\infty}_{n=0} \frac{ {\Gamma} { \left( {a}_{1} + {n} \right) } {\Gamma} { \left( {a}_{2} + {n} \right) } {\Gamma} { \left( {a}_{3} + {n} \right) } ... {\Gamma} { \left( {b}_{1} \right) } {\Gamma} { { \left( {b}_{2} \right) } } {\Gamma} { { \left( {b}_{3} \right) } } ... } { {\Gamma} { \left( {b}_{1} + {n} \right) } {\Gamma} { \left( {b}_{2} + {n} \right) } {\Gamma} { \left( {b}_{3} + {n} \right) } ... {\Gamma} { \left( {a}_{1} \right) } {\Gamma} { { \left( {a}_{2} \right) } } {\Gamma} { { \left( {a}_{3} \right) } } ... } \frac{ {z}^{n} }{ {n} ! }
+	\end{equation}
+	记作
+	\begin{equation}
+		{F}_{ {p} , {q} } = \left( {a}_{1} , ... , {a}_{p} ; {b}_{1} , ... , {b}_{q} ; {z} \right)
+	\end{equation}
+\end{mdefinition}
+
+\begin{mtheorem}{超几何级数的敛散性}
+	从超几何级数的定义式我们可以发现,级数是具有收敛半径$ {R} = \lim_{ {n} {\to} {\infty} } \frac{ {c}_{n} }{ {c}_{n+1} } = \frac{ {B} \left( {n} \right) }{ {A} \left( {n} \right) } $的,这个比值与$ {a} $和$ {b} $两组参量是密切相关的,收敛半径应有三种情况:
+	\begin{enumerate}
+		\item $ {A} \left( {n} \right) $的最高级次比$ {B} \left( {n} \right) $的最高级次高,此时的收敛半径为$0$,说明级数只在原点处收敛;
+		\item $ {A} \left( {n} \right) $的最高级次比$ {B} \left( {n} \right) $的最高级次低,此时的收敛半径为$ {\infty} $,说明级数在整个复平面上收敛;
+		\item $ {A} \left( {n} \right) $的最高级次与$ {B} \left( {n} \right) $的最高级次相同,此时的收敛半径为最高级次的系数的比值,在我们的定义下,这个比值应为$1$.
+	\end{enumerate}
+\end{mtheorem}
+
+\begin{mtheorem}{超几何级数的导数}
+	超几何级数对$z$的导数为
+	\begin{equation*}
+		\begin{split}
+			&\frac{ \text{d} }{ \text{d} {z} } \sum^{\infty}_{n=0} \frac{ {\Gamma} { \left( {a}_{1} + {n} \right) } {\Gamma} { \left( {a}_{2} + {n} \right) } {\Gamma} { \left( {a}_{3} + {n} \right) } ... { \left( {b}_{1} \right) } {\Gamma} { { \left( {b}_{2} \right) } } {\Gamma} { { \left( {b}_{3} \right) } } ... } { {\Gamma} { \left( {b}_{1} + {n} \right) } {\Gamma} { \left( {b}_{2} + {n} \right) } {\Gamma} { \left( {b}_{3} + {n} \right) } ... {\Gamma} { \left( {a}_{1} \right) } {\Gamma} { { \left( {a}_{2} \right) } } {\Gamma} { { \left( {a}_{3} \right) } } ... } \frac{ {z}^{n} }{ {n} ! }\\
+			=&\sum^{\infty}_{n=1} \frac{ {\Gamma} { \left( {a}_{1} + {n} \right) } {\Gamma} { \left( {a}_{2} + {n} \right) } {\Gamma} { \left( {a}_{3} + {n} \right) } ... {\Gamma} { \left( {b}_{1} \right) } {\Gamma} { { \left( {b}_{2} \right) } } {\Gamma} { { \left( {b}_{3} \right) } } ... } { {\Gamma} { \left( {b}_{1} + {n} \right) } {\Gamma} { \left( {b}_{2} + {n} \right) } {\Gamma} { \left( {b}_{3} + {n} \right) } ... {\Gamma} { \left( {a}_{1} \right) } {\Gamma} { { \left( {a}_{2} \right) } } {\Gamma} { { \left( {a}_{3} \right) } } ... } \frac{ {z}^{n-1} }{ \left( {n} - {1} \right) ! }
+		\end{split}
+	\end{equation*}
+	注意,这里的求和符号变为从$n=1$开始,这是由于$n=0$项为常数,求导后为$0$.
+
+	令$m=n-1$,代入到求和号里,有
+	\begin{equation*}
+		\sum^{\infty}_{m=0} \frac{ {\Gamma} { \left( {a}_{1} + {m} + {1} \right) } {\Gamma} { \left( {a}_{2} + {m} + {1} \right) } {\Gamma} { \left( {a}_{3} + {m} + {1} \right) } ... {\Gamma} { \left( {b}_{1} \right) } {\Gamma} { { \left( {b}_{2} \right) } } {\Gamma} { { \left( {b}_{3} \right) } } ... } { {\Gamma} { \left( {b}_{1} + {m} + {1} \right) } {\Gamma} { \left( {b}_{2} + {m} + {1} \right) } {\Gamma} { \left( {b}_{3} + {m} + {1} \right) } ... {\Gamma} { \left( {a}_{1} \right) } {\Gamma} { { \left( {a}_{2} \right) } } {\Gamma} { { \left( {a}_{3} \right) } } ... } \frac{ {z}^{m} }{ {m} ! }
+	\end{equation*}
+	考虑另一超几何级数其$ {a} $和$ {b} $两组参量的个数相同,但都比前一个级数大$1$
+	\begin{equation*}
+		\begin{split}
+			&\sum^{\infty}_{n=0} \frac{ {\Gamma} { \left( {a}_{1} + {n} + {1} \right) } {\Gamma} { \left( {a}_{2} + {n} + {1} \right) } {\Gamma} { \left( {a}_{3} + {n} + {1} \right) } ... {\Gamma} { \left( {b}_{1} + {1} \right) } {\Gamma} { \left( {b}_{2} + {1} \right) } {\Gamma} { \left( {b}_{3} + {1} \right) } ... } { {\Gamma} { \left( {b}_{1} + {n} + {1} \right) } {\Gamma} { \left( {b}_{2} + {n} + {1} \right) } {\Gamma} { \left( {b}_{3} + {n} + {1} \right) } ... {\Gamma} { \left( {a}_{1} + {1} \right) } {\Gamma} { { \left( {a}_{2} + {1} \right) } } {\Gamma} { { \left( {a}_{3} + {1} \right) } } ... } \frac{ {z}^{n} }{ {n} ! }\\
+			=&\frac{ {b}_{1} {b}_{2} {b}_{3} ... }{ {a}_{1} {a}_{2} {a}_{3} ... } \sum^{\infty}_{n=0} \frac{ {\Gamma} { \left( {a}_{1} + {n} + {1} \right) } {\Gamma} { \left( {a}_{2} + {n} + {1} \right) } {\Gamma} { \left( {a}_{3} + {n} + {1} \right) } ... {\Gamma} { \left( {b}_{1} \right) } {\Gamma} { \left( {b}_{2} \right) } {\Gamma} { \left( {b}_{3} \right) } ... } { {\Gamma} { \left( {b}_{1} + {n} + {1} \right) } {\Gamma} { \left( {b}_{2} + {n} + {1} \right) } {\Gamma} { \left( {b}_{3} + {n} + {1} \right) } ... {\Gamma} { \left( {a}_{1} \right) } {\Gamma} { \left( {a}_{2} \right) } {\Gamma} { \left( {a}_{3} \right) } ... } \frac{ {z}^{n} }{ {n} ! }
+		\end{split}
+	\end{equation*}
+	于是我们有
+	\begin{equation}
+		\begin{split}
+			&\frac{ {\prod}^{p}_{i=1} {a}_{i} }{ {\prod}^{q}_{j=1} {b}_{j} } {F}_{ {p} , {q} } \left( {a}_{1} + {1} , {a}_{2} + {1} , {a}_{3} + {1} , ... ; {b}_{1} + {1} , {b}_{2} + {1} , {b}_{3} + {1} ; {z} \right)\\
+			=&\frac{ \text{d} }{ \text{d} {z} } {F}_{ {p} , {q} } \left( {a}_{1} , {a}_{2} , {a}_{3} , ... ; {b}_{1} , {b}_{2} , {b}_{3} ; {z} \right)
+		\end{split}
+	\end{equation}
+\end{mtheorem}
+
+\begin{mtheorem}{超几何级数的递推性}
+	考虑将$ {z} \frac{ \text{d} }{ \text{d}{z} } $作用于超几何级数,于是我们得到
+	\begin{equation*}
+		\begin{split}
+			&{z} \frac{ \text{d} }{ \text{d} {z} } \sum^{\infty}_{n=0} \frac{ {\Gamma} { \left( {a}_{1} + {n} \right) } {\Gamma} ... { \left( {a}_{j} + {n} \right) } {\Gamma} ... { \left( {a}_{p} + {n} \right) } { \left( {b}_{1} \right) } ... {\Gamma} { \left( {b}_{k} \right) } ... {\Gamma} { \left( {b}_{q} \right) } } { {\Gamma} { \left( {b}_{1} + {n} \right) } {\Gamma} { \left( {b}_{2} + {n} \right) } {\Gamma} { \left( {b}_{3} + {n} \right) } ... {\Gamma} { \left( {a}_{1} \right) } {\Gamma} { { \left( {a}_{2} \right) } } {\Gamma} { { \left( {a}_{3} \right) } } ... } \frac{ {z}^{n} }{ {n} ! }\\
+			=&\sum^{\infty}_{n=0} \frac{ {\Gamma} { \left( {a}_{1} + {n} \right) } {\Gamma} { \left( {a}_{2} + {n} \right) } {\Gamma} { \left( {a}_{3} + {n} \right) } ... {\Gamma} { \left( {b}_{1} \right) } {\Gamma} { \left( {b}_{2} \right) } {\Gamma} { \left( {b}_{3} \right) } ... } { {\Gamma} { \left( {b}_{1} + {n} \right) } {\Gamma} { \left( {b}_{2} + {n} \right) } {\Gamma} { \left( {b}_{3} + {n} \right) } ... {\Gamma} { \left( {a}_{1} \right) } {\Gamma} { \left( {a}_{2} \right) } {\Gamma} { \left( {a}_{3} \right) } ... } \frac{ {n} {z}^{n} }{ {n} ! }
+		\end{split}
+	\end{equation*}
+	由$Gamma$函数的性质,我们知道$ {\Gamma} \left( {a} + 1 \right) = a {\Gamma} \left( {a} \right)$,则我们可得
+	\begin{equation*}
+		\begin{split}
+			&\left( {z} \frac{ \text{d} }{ \text{d} {z} } + {a}_{j} \right) \sum^{\infty}_{n=0} \frac{ {\Gamma} { \left( {a}_{1} + {n} \right) } {\Gamma} ... { \left( {a}_{j} + {n} \right) } {\Gamma} ... { \left( {a}_{p} + {n} \right) } { \left( {b}_{1} \right) } ... {\Gamma} { \left( {b}_{k} \right) } ... {\Gamma} { \left( {b}_{q} \right) } } { {\Gamma} { \left( {b}_{1} + {n} \right) } ... {\Gamma} { \left( {b}_{k} + {n} \right) } ... {\Gamma} { \left( {b}_{3} + {n} \right) } {\Gamma} { \left( {a}_{1} \right) } ... {\Gamma} { \left( {a}_{j} \right) } {\Gamma} ... { \left( {a}_{p} \right) } } \frac{ {z}^{n} }{ {n} ! }\\
+			=&\sum^{\infty}_{n=0} \frac{ { \left( {a}_{j} + {n} \right) } {\Gamma} { \left( {a}_{1} + {n} \right) } ... {\Gamma} { \left( {a}_{j} + {n} \right) } ... {\Gamma} { \left( {a}_{p} + {n} \right) } { \left( {b}_{1} \right) } ... {\Gamma} { \left( {b}_{k} \right) } ... {\Gamma} { \left( {b}_{q} \right) } } { {\Gamma} { \left( {b}_{1} + {n} \right) } ... {\Gamma} { \left( {b}_{k} + {n} \right) } ... {\Gamma} { \left( {b}_{q} + {n} \right) } {\Gamma} { \left( {a}_{1} \right) } ... {\Gamma} { \left( {a}_{j} \right) } ... {\Gamma} { \left( {a}_{p} \right) } } \frac{ {z}^{n} }{ {n} ! }\\
+			=&{a}_{j} \sum^{\infty}_{n=0} \frac{ {\Gamma} { \left( {a}_{1} + {n} \right) } ... {\Gamma} { \left( {a}_{j} + {n} + {1} \right) } ... {\Gamma} { \left( {a}_{p} + {n} \right) } { \left( {b}_{1} \right) } ... {\Gamma} { \left( {b}_{k} \right) } ... {\Gamma} { \left( {b}_{q} \right) } } { {\Gamma} { \left( {b}_{1} + {n} \right) } ... {\Gamma} { \left( {b}_{k} + {n} \right) } ... {\Gamma} { \left( {b}_{q} + {n} \right) } {\Gamma} { \left( {a}_{1} \right) } ... {\Gamma} { \left( {a}_{j} + {1} \right) } ... {\Gamma} { \left( {a}_{p} \right) } } \frac{ {z}^{n} }{ {n} ! }
+		\end{split}
+	\end{equation*}
+	即
+	\begin{equation}
+		\begin{split}
+			&\left( {z} \frac{ \text{d} }{ \text{d} {z} } + {a}_{j} \right) {F}_{ {p} , {q} } \left( {a}_{1} , ... , {a}_{j} , ... , {a}_{p} ; {b}_{1} , ... , {b}_{k} , ... , {b}_{q} ; {z} \right)\\
+			=&{a}_{j} {F}_{ {p} , {q} } \left( {a}_{1} , ... , {a}_{j} + {1} , ... , {a}_{p} ; {b}_{1} , ... , {b}_{k} , ... , {b}_{q} ; {z} \right)
+		\end{split}
+	\end{equation}
+	同理,对${b}_{k} \left( {b}_{k} {\neq} {1} \right)$有
+	\begin{equation}
+		\begin{split}
+			&\left( {z} \frac{ \text{d} }{ \text{d} {z} } + {b}_{k} - {1} \right) {F}_{ {p} , {q} } \left( {a}_{1} , ... , {a}_{j} , ... , {a}_{p} ; {b}_{1} , ... , {b}_{k} , ... , {b}_{q} ; {z} \right)\\
+			=&\left( {b}_{k} - {1} \right) {F}_{ {p} , {q} } \left( {a}_{1} , ... , {a}_{j} , ... , {a}_{p} ; {b}_{1} , ... , {b}_{k} - {1} , ... , {b}_{q} ; {z} \right)
+		\end{split}
+	\end{equation}
+\end{mtheorem}
+
+\begin{mtheorem}{超几何级数奇点的合流}
+	考虑超几何级数$ {F}_{ {p} + {1} , {q} } \left( {a}_{1} , ... , {a}_{p} , {\alpha} ; {b}_{1} , ... , {b}_{q} ; {z} \right) $,我们将$ {z} $替换为$ \frac{z}{\alpha}$,于是我们得到
+	\begin{equation*}
+		\sum^{\infty}_{n=0} \frac{ {\Gamma} \left( {a}_{1} + {n} \right) ... {\Gamma} \left( {a}_{p} + {n} \right) {\Gamma} \left( {b}_{1} \right) ... {\Gamma} \left( {b}_{q} \right) {\Gamma} \left( {\alpha} + {n} \right) }{ {\Gamma} \left( {b}_{1} + {n} \right) ... {\Gamma} \left( {b}_{q} + {n} \right) {\Gamma} \left( {a}_{1} \right) ... {\Gamma} \left( {a}_{p} \right) {\Gamma} \left( {\alpha} \right)} \frac{ {z}^{n} }{ {\alpha}^{n} {n}!}
+	\end{equation*}
+	此式中,系数$ \frac{ {\Gamma} \left( {\alpha} + {n} \right) }{ {\Gamma} \left( {\alpha} \right) {\alpha}^{n} } = \frac{ \left( {\alpha} + {n} - {1} \right) \left( {\alpha} + {n} - {2} \right) ... \left( {\alpha} \right) }{ {\alpha}^{n} } $在$ \left| {\alpha} \right| {\to} {\infty} $条件下为$1$,此时级数退化为$ {F}_{ {p} , {q} } \left( {a}_{1} , ... , {a}_{p} ; {b}_{1} , ... , {b}_{q} ; {z} \right)$
+	所以我们有
+	\begin{equation}
+		\lim_{ \left| {\alpha} \right| {\to} {\infty} } {F}_{ {p} + {1} , {q} } \left( {a}_{1} , ... , {a}_{p} , {\alpha} ; {b}_{1} , ... , {b}_{q} ; \frac{z}{\alpha} \right) = {F}_{ {p} , {q} } \left( {a}_{1} , ... , {a}_{p} ; {b}_{1} , ... , {b}_{q} ; {z} \right)
+	\end{equation}
+
+	同样地,我们有
+	\begin{equation}
+		\lim_{ \left| {\beta} \right| {\to} {\infty} } {F}_{ {p} , {q} + {1} } \left( {a}_{1} , ... , {a}_{p} ; {b}_{1} , ... , {b}_{q} , {\beta} ; {\beta}{z} \right) = {F}_{ {p} , {q} } \left( {a}_{1} , ... , {a}_{p} ; {b}_{1} , ... , {b}_{q} ; {z} \right)
+	\end{equation}
+
+	对于这些系数的合流,有一些特殊的条件,具体条件参见参考文献.
+\end{mtheorem}
+
+\subsection{超几何微分方程}
+
+\begin{mdefinition}{超几何微分方程}
+	由超几何级数的递推性,我们可以考虑将超几何级数的每一个${b}$参数减$1$,再对得到的级数求导,这与将超几何级数的每一个${a}$参数加$1$得到的级数应该相同,即
+	\begin{equation*}
+		\begin{split}
+			&\prod^{p}_{ {i} = 1 } \left( {z} \frac{ \text{d} }{ \text{d} {z} } + {a}_{i} \right) {F}_{p,q}\left( {a}_{1} , ... , {a}_{p} ; {b}_{1} , ... , {b}_{q} ; {z} \right)\\
+			=&\left( {\prod}^{p}_{i=1} {a}_{i} \right) {F}_{p,q}\left( {a}_{1} + {1} , ... , {a}_{p} + {1} ; {b}_{1} , ... , {b}_{q} ; {z} \right)
+		\end{split}
+	\end{equation*}
+	\begin{equation*}
+		\begin{split}
+			&\frac{ \text{d} }{ \text{d} {z} } \prod^{p}_{ {j} = 1 } \left( {z} \frac{ \text{d} }{ \text{d} {z} } + {b}_{j} - {1} \right) {F}_{p,q}\left( {a}_{1} , ... , {a}_{p} ; {b}_{1} , ... , {b}_{q} ; {z} \right)\\
+			=&\frac{ \text{d} }{ \text{d} {z} } \prod^{p}_{ {j} = 1 } \left( {b}_{j} - {1} \right) {F}_{p,q}\left( {a}_{1} , ... , {a}_{p} ; {b}_{1} - {1} , ... , {b}_{q} - {1} ; {z} \right)\\
+			=&\left( {\prod}^{p}_{i=1} {a}_{i} \right) {F}_{p,q}\left( {a}_{1} , ... , {a}_{p} ; {b}_{1} - {1} , ... , {b}_{q} - {1} ; {z} \right)
+		\end{split}
+	\end{equation*}
+	我们令${\omega} = {F}_{p,q}\left( {a}_{1} , ... , {a}_{p} ; {b}_{1} - {1} , ... , {b}_{q} - {1} ; {z} \right)$,就可得
+	\begin{equation}
+		\prod^{p}_{ {i} = 1 } \left( {z} \frac{ \text{d} }{ \text{d} {z} } + {a}_{i} \right) {\omega} = \frac{ \text{d} }{ \text{d} {z} } \prod^{p}_{ {j} = 1 } \left( {z} \frac{ \text{d} }{ \text{d} {z} } + {b}_{j} - {1} \right) {\omega}
+	\end{equation}
+	此式即为超几何微分方程.
+
+	我们可以发现超几何微分方程是一个齐次线性微分方程,其阶数与参数${a}$和${b}$的数量${p}$和${q}$有关.同时级数的敛散性也与这两组参数有关,对于微分方程的解,只有那些在整个复平面上或复平面部分区域上收敛的超几何级数对我们有意义,所以这里还应有一条件,即$ {p} {\leqslant} {q} + {1} $,于是$p$所导致的阶数被限制为不能高于$q$导致的级数,所以在确定超几何微分方程的阶数时,我们只需关心$q$参数的大小.
+\end{mdefinition}
+%====================
+\section{超几何微分方程的重要解}
+由于超几何微分方程是一个高阶微分方程,在这里我们只对几个重要解简单讨论.
+
+\subsection{阶数为$1$的超几何微分方程的解}
+\begin{mproof}{阶数为$1$的超几何微分方程的解}
+	阶数为$1$的超几何微分方程,有两种情况:
+
+	\begin{enumerate}
+		\item $p=0$,$q=0$
+		\begin{equation}
+			{\omega} = \frac{ \text{d} }{ \text{d} {z} } {\omega}
+		\end{equation}
+		这个方程解出来即为${\omega} = {e}^{z}$,即指数函数,这点可以从定义式看出来,即
+		\begin{equation*}
+			{\omega} = \sum^{\infty}_{ n = 0 } \frac{ {z}^{n} }{ n ! }
+		\end{equation*}
+
+		\item $p=1$,$q=0$
+		\begin{equation*}
+			\left( {z} \frac{ \text{d} }{ \text{d} {z} } + {a} \right) {\omega} = \frac{ \text{d} }{ \text{d} {z} } {\omega}
+		\end{equation*}
+		经过移项可得到
+		\begin{equation}
+			\frac{ \text{d} {\omega} }{ \text{d} {z} } = \frac{ {a} {\omega} }{ {1} - {z} }
+		\end{equation}
+		这个方程的解很简单,为$ {\omega} = { \left( 1 - {z} \right) }^{ -a }$,它的各阶导数为
+		\begin{equation*}
+			\begin{split}
+				&{\omega}^{ \left( {1} \right) } = a { \left( {1} - {z} \right)}^{ - {a} - 1 }\\
+				&{\omega}^{ \left( {2} \right) } = a \left( {a} + {1} \right) { \left( {1} - {z} \right)}^{ - {a} - 2 }\\
+				&...\\
+				&{\omega}^{ \left( {n} \right) } = \frac{ {\Gamma} \left( {a} + {n} \right) }{ {\Gamma} \left( {a} \right) } { \left( {1} - {z} \right)}^{ - {a} - n }
+			\end{split}
+		\end{equation*}
+		则它的麦克劳林级数为
+		\begin{equation*}
+			\sum^{\infty}_{n = 0} {\omega}^{ \left( {n} \right) } \left( {0} \right) \frac{ {z}^{n} }{ {n} !} = \sum^{\infty}_{ n = 0 } \frac{ {\Gamma} \left( {a} + {n} \right) }{ {\Gamma} \left( {a} \right) } \frac{ {z}^{n} }{ n ! }
+		\end{equation*}
+		这个解也与超几何级数的定义式相同.
+
+		如果将$p=1$,$q=0$条件中的${a}$进行合流,即将${z}$换为$\frac{z}{a}$,再对${a}$取极限,那我们可得微分方程
+		\begin{equation}
+			\frac{ \text{d} {\omega} }{ \text{d} {z} } = \frac{ {a} {\omega} }{ {a} - {z} }
+		\end{equation}
+		它的解为$ {\omega} = { \left( 1 - \frac{z}{a} \right) }^{ -a } $,此时取极限,有$	{\omega} = \lim_{ {a} {\to} {\infty} } { \left( 1 - \frac{z}{a} \right) }^{ -a } = {e}^{z} $.
+
+		则我们可知$p=0$,$q=0$可由$p=1$,$q=0$进行合流得来,这也符合合流的过程.
+	\end{enumerate}
+\end{mproof}
+
+\subsection{阶数为$2$的超几何微分方程的解}
+\begin{mproof}{阶数为$2$的超几何微分方程的解}
+	阶数为$2$的超几何微分方程,有三种情况:
+
+	\begin{enumerate}
+		\item $p=0$,$q=1$
+		\begin{equation*}
+			{\omega} = \frac{ \text{d} }{ \text{d} {z} } \left( {z} \frac{ \text{d} }{ \text{d} {z} } + {b} - 1 \right) {\omega}
+		\end{equation*}
+		整理后得到
+		\begin{equation}
+			{z} \frac{ { \text{d} }^{2} {\omega} }{ \text{d} {z}^{2} } + {b} \frac{ \text{d} {\omega} }{ \text{d} {z} } - {\omega} = 0
+		\end{equation}
+
+		\item $p=1$,$q=1$
+		\begin{equation*}
+			\left( {z} \frac{ \text{d} }{ \text{d} {z} } + {a} \right) {\omega} = \frac{ \text{d} }{ \text{d} {z} } \left( {z} \frac{ \text{d} }{ \text{d} {z} } + {b} - 1 \right) {\omega}
+		\end{equation*}
+		整理后得到
+		\begin{equation}
+			{z} \frac{ { \text{d} }^{2} {\omega} }{ \text{d} {z}^{2} } + \left( {b} - {z} \right) \frac{ \text{d} {\omega} }{ \text{d} {z} } - {a} {\omega} = 0
+		\end{equation}
+
+		\item $p=2$,$q=1$
+		\begin{equation*}
+			\left( {z} \frac{ \text{d} }{ \text{d} {z} } + {a}_{1} \right) \left( {z} \frac{ \text{d} }{ \text{d} {z} } + {a}_{2} \right) {\omega} = \frac{ \text{d} }{ \text{d} {z} } \left( {z} \frac{ \text{d} }{ \text{d} {z} } + {b} - 1 \right) {\omega}
+		\end{equation*}
+		整理后得到
+		\begin{equation}
+			\left( {z}^{2} - {z} \right) \frac{ { \text{d} }^{2} {\omega} }{ \text{d} {z}^{2} } + \left[ \left( {a}_{1} + {a}_{2} + 1 \right) {z} - {b} \right] \frac{ \text{d} {\omega} }{ \text{d} {z} } + {a}_{1} {a}_{2} {\omega} = 0
+		\end{equation}
+	\end{enumerate}
+
+	于是我们得到三个微分方程,这三个微分方程中的前两个都可以通过第三个方程进行合流来表示,所以我们先考虑第三个方程
+	\begin{equation*}
+			\left( {z}^{2} - {z} \right) \frac{ { \text{d} }^{2} {\omega} }{ \text{d} {z}^{2} } + \left[ \left( {a}_{1} + {a}_{2} + 1 \right) {z} - {b} \right] \frac{ \text{d} {\omega} }{ \text{d} {z} } - {a}_{1} {a}_{2} {\omega} = 0
+	\end{equation*}
+	这个方程也叫做高斯型超几何微分方程,它的解为高斯型超几何函数$ {F}_{2,1} \left( {a}_{1} , {a}_{2} ; {b} ; {z} \right) $,一般也记为$ {F} \left( {\alpha} , {\beta} ; {\gamma} ; {z} \right) $,其中$ {\alpha} = {a}_{1} $,$ {\beta} = {a}_{2} $,$ {\gamma} = {b} $.
+
+	对于这个方程,要进行合流,我们可以将${z}$换为$\frac{z}{\alpha}$,可得
+	\begin{equation*}
+		{z} \left( \frac{z}{\alpha} - 1 \right) \frac{ { \text{d} }^{2} {\omega} }{ \text{d} {z}^{2} } + \left[ \left( {\alpha} + {\beta} + 1 \right) \frac{z}{\alpha} - {\gamma} \right] {\alpha} \frac{ \text{d} {\omega} }{ \text{d} {z} } + {\alpha} {\beta} {\omega} = 0
+	\end{equation*}
+	等式两边除以$\alpha$,再对${\alpha}$取极限,可得
+	\begin{equation*}
+		- {z} \frac{ { \text{d} }^{2} {\omega} }{ \text{d} {z}^{2} } + \left( {z} - {\gamma} \right) \frac{ \text{d} {\omega} }{ \text{d} {z} } + {\beta} {\omega} = 0
+	\end{equation*}
+	再变号,即得
+	\begin{equation*}
+		{z} \frac{ { \text{d} }^{2} {\omega} }{ \text{d} {z}^{2} } + \left( {\gamma} - {z} \right) \frac{ \text{d} {\omega} }{ \text{d} {z} } - {\beta} {\omega} = 0
+	\end{equation*}
+	此微分方程形式与$p=1$,$q=1$情况的微分方程形式相同,由于其是由超几何微分方程进行合流得到的,所以也称为合流超几何微分方程.
+
+	再对合流超几何微分方程进行合流即可得$p=0$,$q=1$情况的微分方程,此微分方程也称为合流超几何极限微分方程(此处有歧义,这个说法是从维基百科中得到此微分方程的超几何级数$ {F}_{ {0} , {1} } \left( ; {b} ; {z} \right)$的英文confluent hypergeometric limit functions直译来的,在中文文献中基本查不到,注:这里说的中文文献查不到指的是在知网中查不到相关内容).
+\end{mproof}
+
+\begin{mproof}{(高斯型)超几何微分方程的解}
+	(高斯型)超几何微分方程
+\end{mproof}
+%====================
+
+
+%====================
+\begin{mtheorem}{}
+\end{mtheorem}
 
 %==============================
 %==============================
